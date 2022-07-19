@@ -1,0 +1,58 @@
+#include<bits/stdc++.h>
+using namespace std;
+class Node
+{
+   public:
+    int val;
+    Node * next;
+    Node(int x)
+    {
+           val = x;
+           next = NULL;
+    }
+};
+Node * insertBegin(Node * head,int val)
+{
+    Node *temp  = new Node(val);
+    temp->next = head;
+    return temp;
+}
+Node * insertAtPos(Node * head,int val,int pos)
+{  
+    Node * temp = new Node(val);
+    if(pos == 1)
+    {
+        temp->next = head;
+        return temp;
+    }
+    Node * cur = head;
+    while(cur->next != NULL and pos>2)
+    {
+      cur = cur->next;
+      pos--;
+    }
+    if(cur == NULL)
+    {
+        return head;
+    }
+    temp->next = cur->next;
+    cur->next = temp;
+    return head;
+}
+void print(Node * head)
+{
+   Node * cur = head;
+   while(cur != NULL)
+   {
+       cout<<cur->val<<"->";
+       cur = cur->next;
+   }
+   cout<<endl;
+}
+int main() {
+   Node * head = NULL;
+   head = insertBegin(head,5);
+   head = insertBegin(head,3);
+   head = insertAtPos(head,4,2);
+   print(head);
+}
