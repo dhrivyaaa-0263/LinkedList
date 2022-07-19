@@ -17,7 +17,16 @@ Node * insertBegin(Node * head,int val)
     temp->next = head;
     return temp;
 }
-
+void print(Node * head)
+{
+   Node * cur = head;
+   while(cur != NULL)
+   {
+       cout<<cur->val<<"->";
+       cur = cur->next;
+   }
+   cout<<endl;
+}
 int main() {
    Node * head = NULL;
    head = insertBegin(head,5);
